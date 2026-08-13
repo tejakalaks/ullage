@@ -29,9 +29,7 @@ final class ScanViewModel {
     private var task: Task<Void, Never>?
     private let makeService: () -> WineIntelligenceService
 
-    /// Nonisolated so a `View` can build one in a property initialiser, which runs outside the
-    /// main actor even though SwiftUI only ever calls it from the main thread.
-    nonisolated init(makeService: @escaping () -> WineIntelligenceService) {
+    init(makeService: @escaping () -> WineIntelligenceService) {
         self.makeService = makeService
     }
 

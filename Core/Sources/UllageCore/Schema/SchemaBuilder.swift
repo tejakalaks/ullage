@@ -58,15 +58,26 @@ public enum Schema {
 
     /// Makes a node accept `null` as well as its own type, which is how an optional field is
     /// spelled under strict mode.
+    ///
+    /// An enum needs `null` adding to its list of values as well as to its type. `enum`
+    /// restricts a value to exactly the listed options, so widening the type alone would
+    /// produce a field that claims to be nullable and then rejects null.
     public static func nullable(_ node: JSONValue) -> JSONValue {
         guard let pairs = node.objectPairs else { return node }
         return .object(pairs.map { pair in
-            guard pair.key == "type" else { return pair }
-            switch pair.value {
-            case let .string(type) where type != "null":
-                return (key: "type", value: .array([.string(type), .string("null")]))
-            case let .array(types) where !types.contains(.string("null")):
-                return (key: "type", value: .array(types + [.string("null")]))
+            switch pair.key {
+            case "type":
+                switch pair.value {
+                case let .string(type) where type != "null":
+                    return (key: "type", value: .array([.string(type), .string("null")]))
+                case let .array(types) where !types.contains(.string("null")):
+                    return (key: "type", value: .array(types + [.string("null")]))
+                default:
+                    return pair
+                }
+            case "enum":
+                guard let values = pair.value.arrayValue, !values.contains(.null) else { return pair }
+                return (key: "enum", value: .array(values + [.null]))
             default:
                 return pair
             }

@@ -5,6 +5,11 @@ import UllageCore
 import UIKit
 
 /// The main screen: photograph a bottle, watch it get researched, read the result.
+///
+/// Isolated to the main actor as a whole rather than relying on `body` alone: every computed
+/// subview here reads the camera controller and the scan view model, both of which are
+/// main-actor isolated.
+@MainActor
 struct ScanView: View {
     @Environment(AppSettings.self) private var settings
     @Environment(\.modelContext) private var modelContext

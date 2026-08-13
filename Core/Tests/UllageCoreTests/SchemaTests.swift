@@ -59,6 +59,26 @@ final class SchemaTests: XCTestCase {
         XCTAssertEqual(once, twice)
     }
 
+    /// Widening the type without widening the list of values would give a field that says it
+    /// is nullable and then rejects null, because `enum` restricts a value to exactly what it
+    /// lists.
+    func testNullableEnumAcceptsNullAsAValueNotJustAsAType() {
+        let node = Schema.nullable(Schema.stringEnum(["red", "white"]))
+        XCTAssertEqual(node["type"], .array([.string("string"), .string("null")]))
+        XCTAssertEqual(node["enum"], .array([.string("red"), .string("white"), .null]))
+        XCTAssertEqual(Schema.nullable(node), node, "Applying it twice must not add null twice")
+    }
+
+    func testTheOptionalWineTypeOnALabelAcceptsNull() throws {
+        let wineType = try XCTUnwrap(WineSchema.labelReading["properties"]?["wine_type"])
+        let values = try XCTUnwrap(wineType["enum"]?.arrayValue)
+        XCTAssertTrue(values.contains(.null), "A label whose style cannot be judged must be able to say so")
+        XCTAssertEqual(
+            Set(values.compactMap(\.stringValue)),
+            Set(WineType.allCases.map(\.rawValue))
+        )
+    }
+
     /// Every enum in the schema has to agree with the Swift type it decodes into, or the model
     /// will faithfully emit a value the app then discards.
     func testWineTypeEnumMatchesTheSwiftType() throws {

@@ -35,7 +35,13 @@ struct SettingsView: View {
                     Button("Done") { dismiss() }
                 }
             }
-            .alert("Couldn't save the key", isPresented: .constant(saveError != nil)) {
+            .alert(
+                "Couldn't save the key",
+                isPresented: Binding(
+                    get: { saveError != nil },
+                    set: { if !$0 { saveError = nil } }
+                )
+            ) {
                 Button("OK") { saveError = nil }
             } message: {
                 Text(saveError ?? "")
@@ -263,6 +269,9 @@ struct SettingsView: View {
 
     // MARK: - Actions
 
+    // Annotated so the view's state is only ever written on the main actor; an unannotated
+    // async method would resume off it after the network call.
+    @MainActor
     private func verifyAndSave() async {
         isVerifying = true
         defer { isVerifying = false }
@@ -288,6 +297,7 @@ struct SettingsView: View {
         }
     }
 
+    @MainActor
     private func verifyStoredKey() async {
         isVerifying = true
         defer { isVerifying = false }

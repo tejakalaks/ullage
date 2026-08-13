@@ -31,11 +31,6 @@ final class CameraController: NSObject {
     private var isConfigured = false
     private var captureContinuation: CheckedContinuation<UIImage, Error>?
 
-    /// Nonisolated so a `View` can create one in a property initialiser.
-    nonisolated override init() {
-        super.init()
-    }
-
     enum CaptureError: LocalizedError {
         case notReady
         case noImageData

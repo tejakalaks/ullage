@@ -10,7 +10,9 @@ import UllageCore
 /// fields are the ones the cellar list actually sorts and searches on.
 @Model
 final class ScanRecord {
-    var id: UUID = UUID()
+    /// Named `dossierID` rather than `id`: `PersistentModel` already conforms to `Identifiable`
+    /// with a `PersistentIdentifier`, and a stored `id` of another type collides with it.
+    var dossierID: UUID = UUID()
     var savedAt: Date = Date()
     var producer: String = ""
     var wineName: String?
@@ -26,7 +28,7 @@ final class ScanRecord {
     @Attribute(.externalStorage) var dossierData: Data = Data()
 
     init(dossier: WineDossier, thumbnailData: Data?, savedAt: Date = Date()) {
-        self.id = dossier.id
+        self.dossierID = dossier.id
         self.savedAt = savedAt
         self.thumbnailData = thumbnailData
         self.producer = dossier.identity.producer
