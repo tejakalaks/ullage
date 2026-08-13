@@ -34,13 +34,11 @@ final class CameraController: NSObject {
     enum CaptureError: LocalizedError {
         case notReady
         case noImageData
-        case cancelled
 
         var errorDescription: String? {
             switch self {
             case .notReady: return "The camera is not ready yet."
             case .noImageData: return "The photo could not be read."
-            case .cancelled: return "The capture was cancelled."
             }
         }
     }

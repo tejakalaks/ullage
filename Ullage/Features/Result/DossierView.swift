@@ -31,10 +31,14 @@ struct DossierView: View {
                 winemakingSection
                 tastingSection
                 pairingsSection
-                ratingsSection
-                priceSection
-                confidenceSection
-                sourcesSection
+
+                // Grouped only because ViewBuilder takes at most ten children.
+                Group {
+                    ratingsSection
+                    priceSection
+                    confidenceSection
+                    sourcesSection
+                }
             }
             .padding(16)
         }

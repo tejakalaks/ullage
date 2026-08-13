@@ -109,6 +109,11 @@ device.
 cd Core && swift test
 ```
 
+The service layer in `Ullage/Core` needs only Foundation, so it can also be type-checked away
+from Xcode by pointing a scratch SwiftPM package at those files with `URLSession.bytes` and the
+keychain stubbed. That is worth knowing if you are ever working on this without a Mac to hand;
+it covers the API client, the two-pass pipeline and the settings model.
+
 ## Things worth knowing if you work on this
 
 - **The prompts are the product.** They are in
