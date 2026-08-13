@@ -1,0 +1,27 @@
+{
+  "is_wine_label": true,
+  "rejection_reason": null,
+  "producer": "Domaine Tempier",
+  "cuvee": "La Migoua",
+  "vintage": 2019,
+  "is_non_vintage": false,
+  "appellation": "Bandol",
+  "region": "Provence",
+  "country": "France",
+  "wine_type": "red",
+  "alcohol_percent": 14.0,
+  "bottle_size_ml": 750,
+  "classification": null,
+  "importer": "Kermit Lynch Wine Merchant",
+  "other_label_text": ["Mis en bouteille au domaine", "Famille Peyraud"],
+  "visual_description": "Cream label with a simple black serif wordmark and a hand-drawn vine motif.",
+  "confidence": 0.91,
+  "alternatives": [
+    { "description": "Domaine Tempier Bandol Cuvée Classique 2019", "confidence": 0.12 }
+  ],
+  "suggested_queries": [
+    "Domaine Tempier La Migoua 2019 technical sheet",
+    "domainetempier.com La Migoua 2019",
+    "Bandol 2019 vintage report Mourvedre"
+  ]
+}

@@ -1,0 +1,27 @@
+event: response.created
+data: {"type":"response.created","response":{"id":"resp_stream_1","status":"in_progress"}}
+
+event: response.output_item.added
+data: {"type":"response.output_item.added","output_index":0,"item":{"id":"ws_1","type":"web_search_call","status":"in_progress","action":{"type":"search","query":"Domaine Tempier La Migoua 2019 tech sheet"}}}
+
+event: response.web_search_call.searching
+data: {"type":"response.web_search_call.searching","item_id":"ws_1","output_index":0}
+
+event: response.web_search_call.completed
+data: {"type":"response.web_search_call.completed","item_id":"ws_1","output_index":0}
+
+event: response.output_item.added
+data: {"type":"response.output_item.added","output_index":1,"item":{"id":"ws_2","type":"web_search_call","status":"in_progress","action":{"type":"search","query":"Bandol 2019 vintage report"}}}
+
+event: response.web_search_call.completed
+data: {"type":"response.web_search_call.completed","item_id":"ws_2","output_index":1}
+
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","item_id":"msg_1","delta":"{\"identity\":{\"producer\":\"Domaine "}
+
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","item_id":"msg_1","delta":"Tempier\"}}"}
+
+event: response.completed
+data: {"type":"response.completed","response":{"id":"resp_stream_1","status":"completed","model":"gpt-5-mini","output":[{"id":"ws_1","type":"web_search_call","status":"completed","action":{"type":"search","query":"Domaine Tempier La Migoua 2019 tech sheet"}},{"id":"msg_1","type":"message","role":"assistant","content":[{"type":"output_text","text":"{\"identity\":{\"producer\":\"Domaine Tempier\"}}","annotations":[{"type":"url_citation","url":"https://www.domainetempier.com/en/our-wines/la-migoua/","title":"Domaine Tempier — La Migoua"}]}]}],"usage":{"input_tokens":100,"output_tokens":50,"total_tokens":150}}}
+

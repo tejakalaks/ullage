@@ -1,0 +1,45 @@
+{
+  "id": "resp_abc123",
+  "object": "response",
+  "status": "completed",
+  "model": "gpt-5-mini",
+  "output": [
+    {
+      "id": "ws_001",
+      "type": "web_search_call",
+      "status": "completed",
+      "action": {
+        "type": "search",
+        "query": "Domaine Tempier Bandol La Migoua 2019 technical sheet"
+      }
+    },
+    {
+      "id": "msg_001",
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "annotations": [
+            {
+              "type": "url_citation",
+              "url": "https://www.domainetempier.com/en/our-wines/la-migoua/",
+              "title": "Domaine Tempier — La Migoua"
+            },
+            {
+              "type": "url_citation",
+              "url": "https://www.domainetempier.com/en/our-wines/la-migoua/",
+              "title": "Domaine Tempier — La Migoua"
+            }
+          ],
+          "text": "{\"identity\":{\"producer\":\"Domaine Tempier\",\"wine_name\":\"Bandol La Migoua\",\"vintage\":2019,\"is_non_vintage\":false,\"wine_type\":\"red\",\"alcohol_percent\":14.0,\"bottle_size_ml\":750,\"summary\":\"A single-parcel Bandol from the highest and coolest of Tempier's sites, with more Cinsault and Syrah in the blend than the estate's other cuvees.\"},\"origin\":{\"country\":{\"value\":\"France\",\"provenance\":\"label\",\"source_indices\":[]},\"region\":{\"value\":\"Provence\",\"provenance\":\"web\",\"source_indices\":[0]},\"subregion\":null,\"appellation\":{\"value\":\"Bandol AOC\",\"provenance\":\"label\",\"source_indices\":[]},\"vineyard\":{\"value\":\"La Migoua\",\"provenance\":\"label\",\"source_indices\":[]},\"classification\":null,\"terroir_notes\":{\"value\":\"Clay and limestone at 300 metres, planted among oak and rosemary scrub which the estate credits for the wine's herbal edge.\",\"provenance\":\"web\",\"source_indices\":[0]}},\"composition\":[{\"name\":\"Mourvedre\",\"percentage\":55.0},{\"name\":\"Grenache\",\"percentage\":25.0},{\"name\":\"Cinsault\",\"percentage\":15.0},{\"name\":\"Syrah\",\"percentage\":5.0}],\"winemaking\":{\"winemaker_notes\":{\"value\":\"Destemmed, fermented in concrete and aged eighteen months in large old foudres.\",\"provenance\":\"web\",\"source_indices\":[0]},\"vinification\":null,\"aging\":{\"value\":\"Eighteen months in 20-60 hectolitre foudres.\",\"provenance\":\"web\",\"source_indices\":[0]},\"viticulture\":null,\"is_organic\":true,\"is_biodynamic\":null,\"is_vegan\":null,\"production_quantity\":null},\"tasting\":{\"nose\":{\"value\":\"Garrigue, black olive and warm red fruit.\",\"provenance\":\"web\",\"source_indices\":[0]},\"palate\":null,\"finish\":null,\"structure\":{\"body\":4,\"acidity\":3,\"tannin\":4,\"sweetness\":1}},\"drinking_window\":{\"start_year\":2025,\"end_year\":2040,\"peak_start_year\":2028,\"peak_end_year\":2036,\"advice\":\"Needs a couple more years; decant if opening now.\",\"decant_minutes\":90,\"serving_temperature_celsius\":{\"lower\":16.0,\"upper\":18.0},\"provenance\":\"inference\",\"source_indices\":[]},\"pairings\":[\"Daube of beef with orange peel\",\"Grilled lamb chops with thyme\",\"Ratatouille\"],\"ratings\":[{\"critic\":\"Vinous\",\"score\":\"93\",\"scale\":100.0,\"numeric_score\":93.0,\"review_excerpt\":\"Wonderfully perfumed.\",\"source_index\":0}],\"price_estimate\":{\"low\":65.0,\"high\":85.0,\"currency\":\"USD\",\"market\":\"US retail, 2026\",\"provenance\":\"web\",\"source_indices\":[0]},\"sources\":[{\"title\":\"Domaine Tempier — La Migoua\",\"url\":\"https://www.domainetempier.com/en/our-wines/la-migoua/\",\"note\":\"Producer page\"}],\"overall_confidence\":0.88,\"research_notes\":\"Blend proportions are the estate's stated average; they vary by vintage.\"}"
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "input_tokens": 2451,
+    "output_tokens": 812,
+    "total_tokens": 3263
+  }
+}
