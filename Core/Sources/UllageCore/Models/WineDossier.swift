@@ -382,15 +382,22 @@ extension WineDossier {
                 )
             }
 
-            /// Only the axes that were actually reported, in a sensible reading order.
-            /// Tannin is dropped for whites by the caller rather than shown as an empty bar.
-            public var axes: [(name: String, value: Int)] {
-                var result: [(String, Int)] = []
-                if let body { result.append(("Body", body)) }
-                if let acidity { result.append(("Acidity", acidity)) }
-                if let tannin { result.append(("Tannin", tannin)) }
-                if let sweetness { result.append(("Sweetness", sweetness)) }
-                return result
+            public struct Axis: Hashable, Sendable, Identifiable {
+                public var name: String
+                public var value: Int
+
+                public var id: String { name }
+            }
+
+            /// Only the axes that were actually reported, in a sensible reading order. An axis
+            /// the sources did not mention is left out rather than drawn as an empty bar.
+            public var axes: [Axis] {
+                [
+                    body.map { Axis(name: "Body", value: $0) },
+                    acidity.map { Axis(name: "Acidity", value: $0) },
+                    tannin.map { Axis(name: "Tannin", value: $0) },
+                    sweetness.map { Axis(name: "Sweetness", value: $0) }
+                ].compactMap { $0 }
             }
         }
     }

@@ -35,6 +35,28 @@ public struct ResponsesEnvelope: Decodable, Sendable {
         case error
     }
 
+    public init(
+        id: String? = nil,
+        status: String? = nil,
+        model: String? = nil,
+        outputText: String,
+        refusal: String? = nil,
+        incompleteReason: String? = nil,
+        searchQueries: [String] = [],
+        annotatedURLs: [Citation] = [],
+        usage: Usage? = nil
+    ) {
+        self.id = id
+        self.status = status
+        self.model = model
+        self.outputText = outputText
+        self.refusal = refusal
+        self.incompleteReason = incompleteReason
+        self.searchQueries = searchQueries
+        self.annotatedURLs = annotatedURLs
+        self.usage = usage
+    }
+
     private struct IncompleteDetails: Decodable {
         var reason: String?
     }
